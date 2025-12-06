@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 const collegesData = [
   { rank: 1, college: "Govt Medical College, Thiruvananthapuram", points: 151 },
@@ -14,14 +15,13 @@ const collegesData = [
 const eventsData = {
   mens: [
     { id: 1, event: "Long Jump" },
-    { id: 2, event: "Long Jump" },
-    { id: 3, event: "Long Jump" },
-    { id: 4, event: "Long Jump" },
+    { id: 2, event: "High Jump" },
+    { id: 3, event: "100m Sprint" },
   ],
   womens: [
     { id: 1, event: "Long Jump" },
-    { id: 2, event: "Long Jump" },
-    { id: 3, event: "Long Jump" },
+    { id: 2, event: "High Jump" },
+    { id: 3, event: "100m Sprint" },
   ],
 }
 
@@ -34,26 +34,24 @@ const eventResults = {
 }
 
 export default function ResultsPage() {
-  const [activeTab, setActiveTab] = useState("mens")
   const [selectedEvent, setSelectedEvent] = useState<string | null>(null)
 
   return (
     <div className="min-h-screen bg-background">
       <main className="pt-24 pb-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-lg bg-primary px-8 py-16 text-center mb-12">
+          <div className="rounded-lg bg-linear-to-r from-[#049673] to-[#036B92] px-8 py-16 text-center mb-12">
             <h1 className="text-4xl font-bold text-primary-foreground">Results</h1>
           </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <Card className="overflow-hidden">
-              <div className="bg-primary text-primary-foreground px-6 py-4">
+              <div className="bg-linear-to-r from-[#049673] to-[#036B92] text-primary-foreground px-6 py-4">
                 <h2 className="text-xl font-bold">College Points Table</h2>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b bg-muted">
+                    <tr>
                       <th className="px-6 py-3 text-left text-sm font-semibold">Rank</th>
                       <th className="px-6 py-3 text-left text-sm font-semibold">College</th>
                       <th className="px-6 py-3 text-left text-sm font-semibold">Total Points</th>
@@ -73,45 +71,34 @@ export default function ResultsPage() {
             </Card>
 
             <Card className="overflow-hidden">
-              <div className="bg-primary text-primary-foreground px-6 py-4">
+              <div className="bg-linear-to-r from-[#049673] to-[#036B92] text-primary-foreground px-6 py-4">
                 <h2 className="text-xl font-bold">Published Results</h2>
               </div>
               <div className="p-6">
-                <div className="flex gap-6 mb-6 border-b">
-                  <button
-                    onClick={() => setActiveTab("mens")}
-                    className={`pb-3 font-semibold transition-colors ${activeTab === "mens"
-                      ? "text-foreground border-b-2 border-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                      }`}
-                  >
-                    Mens
-                  </button>
-                  <button
-                    onClick={() => setActiveTab("womens")}
-                    className={`pb-3 font-semibold transition-colors ${activeTab === "womens"
-                      ? "text-foreground border-b-2 border-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                      }`}
-                  >
-                    Women
-                  </button>
-                </div>
+                <Tabs defaultValue="mens" className="space-y-4">
+                  <TabsList className="flex justify-center mb-4">
+                    <TabsTrigger value="mens">Mens</TabsTrigger>
+                    <TabsTrigger value="womens">Womens</TabsTrigger>
+                  </TabsList>
 
-                <div className="space-y-3">
-                  {eventsData[activeTab as keyof typeof eventsData].map((event) => (
-                    <div key={event.id} className="flex items-center justify-between p-3 bg-muted rounded-lg">
-                      <span className="font-medium">{event.event}</span>
-                      <Button
-                        size="sm"
-                        className="bg-primary hover:bg-primary/90 text-primary-foreground"
-                        onClick={() => setSelectedEvent(event.event)}
-                      >
-                        View Result
-                      </Button>
-                    </div>
+                  {Object.entries(eventsData).map(([key, events]) => (
+                    <TabsContent key={key} value={key}>
+                      <div className="space-y-3">
+                        {events.map((event) => (
+                          <div key={event.id} className="flex items-center justify-between p-3 rounded-lg">
+                            <span className="font-medium">{event.event}</span>
+                            <Button
+                              variant={"default"}
+                              onClick={() => setSelectedEvent(event.event)}
+                            >
+                              View Result
+                            </Button>
+                          </div>
+                        ))}
+                      </div>
+                    </TabsContent>
                   ))}
-                </div>
+                </Tabs>
               </div>
             </Card>
           </div>
@@ -136,7 +123,6 @@ export default function ResultsPage() {
                   <div className="flex-1 min-w-0">
                     <p className="font-bold text-sm text-foreground">{result.name}</p>
                     <p className="text-xs text-muted-foreground">{result.college}</p>
-                    <p className="text-sm font-semibold text-primary mt-1">{result.score}</p>
                   </div>
                 </div>
               ))}

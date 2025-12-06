@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { heroDates } from "@/data/common"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function Hero() {
   return (
@@ -37,10 +38,14 @@ export default function Hero() {
 
 
             <div className="flex flex-wrap gap-4 mb-8">
-              <Button variant={"default"}>View Results</Button>
-              <Button variant="outline">
-                View Schedule
-              </Button>
+              <Link href={"/results"}>
+                <Button variant={"default"}>View Results</Button>
+              </Link>
+              <Link href={"/schedule"}>
+                <Button variant="outline">
+                  View Schedule
+                </Button>
+              </Link>
             </div>
           </div>
 

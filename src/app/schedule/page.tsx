@@ -22,7 +22,7 @@ export default function SchedulePage() {
             {scheduleData.map((daySchedule, index) => (
               <div
                 key={index}
-                className="rounded-lg bg-primary/30 backdrop-blur-sm overflow-hidden border border-primary/20"
+                className="rounded-lg bg-primary backdrop-blur-sm overflow-hidden border border-primary/20"
               >
                 <button
                   onClick={() => setExpandedDay(expandedDay === index ? -1 : index)}
