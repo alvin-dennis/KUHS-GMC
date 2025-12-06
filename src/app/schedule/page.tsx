@@ -4,14 +4,14 @@ import { useState } from "react"
 import { ChevronDown } from "lucide-react"
 import { scheduleData } from "@/data/schedule"
 
-export default function SchedulePage() {
+export default function Schedule() {
   const [expandedDay, setExpandedDay] = useState(0)
 
   return (
     <div className="min-h-screen bg-background">
-      <main className="pt-24 pb-16">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-lg bg-primary px-8 py-12 text-center mb-12">
+      <main className="pt-30 pb-16">
+        <div className="mx-auto max-w-4xl px-4 py-6 sm:px-6 sm:py-6 lg:px-8 lg:py-8 bg-primary rounded-2xl">
+          <div className="rounded-lg px-8 py-12 text-center mb-10">
             <h1 className="text-4xl font-bold text-primary-foreground mb-2">Schedule</h1>
             <p className="text-primary-foreground/90">
               An organized schedule covering all timings, and event highlights
@@ -22,7 +22,7 @@ export default function SchedulePage() {
             {scheduleData.map((daySchedule, index) => (
               <div
                 key={index}
-                className="rounded-lg bg-primary backdrop-blur-sm overflow-hidden border border-primary/20"
+                className="rounded-lg bg-[#D9D9D9]/30 backdrop-blur-sm overflow-hidden border border-primary/20"
               >
                 <button
                   onClick={() => setExpandedDay(expandedDay === index ? -1 : index)}
