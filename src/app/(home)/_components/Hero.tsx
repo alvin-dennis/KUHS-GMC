@@ -55,11 +55,9 @@ export default function Hero() {
               alt="Athletics"
               width={1600}
               height={900}
-              sizes="(max-width: 768px) 100vw,
-           (max-width: 1024px) 100vw,
-           100vw"
-              className="w-full h-full object-cover"
-              loading="eager"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="w-full h-full object-contain"
+              priority
             />
           </div>
 
