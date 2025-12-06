@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Loader2 } from "lucide-react"
+import Loader from "@/components/Loader"
 
 
 const SHEET_URLS = {
@@ -89,12 +90,7 @@ export default function Results() {
   }, [])
 
   if (loading) return (
-    <div className="min-h-screen bg-background flex items-center justify-center">
-      <div className="text-center">
-        <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-primary" />
-        <p className="text-lg text-muted-foreground">Loading Results...</p>
-      </div>
-    </div>
+    <Loader />
   )
 
   if (error) return (
