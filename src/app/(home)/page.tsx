@@ -1,17 +1,21 @@
 import Hero from "@/app/(home)/_components/Hero"
-import AboutEvent from "@/app/(home)/_components/About"
+import About from "@/app/(home)/_components/About"
 import SpecialGuests from "@/app/(home)/_components/Guests"
-import EventHighlights from "@/app/(home)/_components/Gallery"
-import GetInTouch from "@/app/(home)/_components/Contact"
+import Gallery from "@/app/(home)/_components/Gallery"
+import Contact from "@/app/(home)/_components/Contact"
+import BackToTop from "@/components/BackToTop"
 
 export default function Home() {
   return (
     <div className="min-h-screen">
       <Hero />
-      <AboutEvent />
+      <About />
       <SpecialGuests />
-      {/* <EventHighlights /> */}
-      <GetInTouch />
+      {/* <Gallery /> */}
+      <Contact />
+      <div className="fixed bottom-4 right-4 z-50">
+        <BackToTop />
+      </div>
     </div>
   )
 }

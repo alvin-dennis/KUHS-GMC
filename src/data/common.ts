@@ -2,7 +2,6 @@ import { IoLogoWhatsapp, IoLogoInstagram } from "react-icons/io";
 import { Trophy, Timer, Users } from "lucide-react";
 
 export const navItems = [
-  { label: "Home", href: "/" },
   { label: "About", href: "#about" },
   { label: "Events", href: "/schedule" },
   { label: "Gallery", href: "#gallery" },
@@ -55,7 +54,6 @@ export const contacts = [
 
 export const footerQuickLinks = [
   { label: "About", href: "#about" },
-  { label: "Events", href: "/events" },
   { label: "Schedule", href: "/schedule" },
   { label: "Results", href: "/results" },
   { label: "Gallery", href: "#gallery" },
