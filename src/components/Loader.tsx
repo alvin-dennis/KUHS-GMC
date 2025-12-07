@@ -1,19 +1,20 @@
-import Image from "next/image";
+"use client";
 
-export default function Loader() {
+import { usePathname } from "next/navigation";
+import { GridLoader } from "react-spinners";
+
+export default function LoadingScreen() {
+    const pathname = usePathname();
+    const isResultPage = pathname === "/results";
+
     return (
-        <main className="relative flex min-h-screen flex-col items-center justify-center bg-transparent dark:bg-transparent">
-            <div className="h-32 w-32 rounded-full bg-white p-4 shadow-lg flex items-center justify-center animate-pulse transition-all ease-out">
-                <div className="relative h-24 w-24">
-                    <Image
-                        src="/logo.png"
-                        alt="KUHS Logo"
-                        className="object-contain"
-                        fill
-                        sizes="100%"
-                    />
-                </div>
-            </div>
-        </main>
+        <div className="flex flex-col items-center justify-center w-screen h-screen space-y-4">
+            <GridLoader color="#049673" />
+            {isResultPage && (
+                <p className="text-lg font-medium text-[#049673] opacity-80">
+                    Loading results…
+                </p>
+            )}
+        </div>
     );
 }

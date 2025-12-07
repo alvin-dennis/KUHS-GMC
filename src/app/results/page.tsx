@@ -5,9 +5,9 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Loader2 } from "lucide-react"
-import Loader from "@/components/Loader"
+import dynamic from "next/dynamic"
 
+const Loader = dynamic(() => import("@/components/Loader"), { ssr: false })
 
 const SHEET_URLS = {
   collegePoints: "https://opensheet.elk.sh/1FWzVShh5uiuUdaXBjecSyWXKhy3XhfIMOKPNV1MeV3s/1",
