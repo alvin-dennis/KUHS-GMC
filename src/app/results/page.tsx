@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import axios from "axios"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
@@ -40,23 +41,30 @@ export default function Results() {
   const [collegesData, setCollegesData] = useState<CollegeData[]>([])
   const [eventsData, setEventsData] = useState<{ mens: EventData[], womens: EventData[] }>({ mens: [], womens: [] })
 
-  const fetchOpenElk = async (url: string) => {
-    const res = await fetch(url)
-    if (!res.ok) throw new Error("Failed to fetch " + url)
-    return res.json()
-  }
+  const fetchResults = async (url: string): Promise<any[]> => {
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (err) {
+      console.error("Fetch error:", err);
+      throw err;
+    }
+  };
+
 
   const extractEvents = (rows: any[]) => {
-    return rows.map((row, index) => ({
-      id: index + 1,
-      event: String(row["Event Name"]),
-      firstName: String(row["First Prize"]),
-      firstCollege: String(row["College(First)"]),
-      secondName: String(row["Second Prize"]),
-      secondCollege: String(row["College(Second)"]),
-      thirdName: String(row["Third Prize"]),
-      thirdCollege: String(row["College(Third)"])
-    })).filter(e => e.event)
+    return rows
+      .map((row, index) => ({
+        id: index + 1,
+        event: String(row["Event Name"] || ""),
+        firstName: String(row["First Prize"] || ""),
+        firstCollege: String(row["College(First)"] || ""),
+        secondName: String(row["Second Prize"] || ""),
+        secondCollege: String(row["College(Second)"] || ""),
+        thirdName: String(row["Third Prize"] || ""),
+        thirdCollege: String(row["College(Third)"] || "")
+      }))
+      .filter(e => e.event && e.event.trim() !== "")
   }
 
   useEffect(() => {
@@ -64,7 +72,10 @@ export default function Results() {
       setLoading(true)
       setError(null)
       try {
-        const collegeData: any[] = await fetchOpenElk(SHEET_URLS.collegePoints)
+        const collegeData: any[] = await fetchResults(SHEET_URLS.collegePoints)
+        const mensData: any[] = await fetchResults(SHEET_URLS.mensEvents)
+        const womensData: any[] = await fetchResults(SHEET_URLS.womensEvents)
+
         const colleges: CollegeData[] = collegeData
           .map((row) => ({
             college: String(row["College name"] || row.College || row.college || ""),
@@ -76,31 +87,33 @@ export default function Results() {
 
         setCollegesData(colleges)
 
-        const mensData: any[] = await fetchOpenElk(SHEET_URLS.mensEvents)
-        const womensData: any[] = await fetchOpenElk(SHEET_URLS.womensEvents)
-        setEventsData({ mens: extractEvents(mensData), womens: extractEvents(womensData) })
+        setEventsData({
+          mens: extractEvents(mensData),
+          womens: extractEvents(womensData)
+        })
+
       } catch (err) {
-        console.error(err)
-        setError("Error loading data. Make sure OpenElk URLs are accessible.")
+        setError("Error loading data. Make sure Google Sheet URLs are accessible.")
       } finally {
         setLoading(false)
       }
     }
+
     loadData()
   }, [])
 
-  if (loading) return (
-    <Loader />
-  )
+  if (loading) return <Loader />
 
-  if (error) return (
-    <div className="min-h-screen bg-background flex items-center justify-center">
-      <Card className="p-6 max-w-md">
-        <h3 className="text-lg font-semibold text-red-600 mb-2">Error Loading Data</h3>
-        <p className="text-sm text-muted-foreground">{error}</p>
-      </Card>
-    </div>
-  )
+  if (error) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Card className="p-6 max-w-md">
+          <h3 className="text-lg font-semibold text-red-600 mb-2">Error Loading Data</h3>
+          <p className="text-sm text-muted-foreground">{error}</p>
+        </Card>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -169,14 +182,14 @@ export default function Results() {
         </div>
       </main>
       <Dialog open={!!selectedEvent} onOpenChange={(open) => !open && setSelectedEvent(null)}>
-        <DialogContent className="max-w-md">
+        <DialogContent className="px-4 sm:px-6"> 
           <DialogHeader>
             <DialogTitle className="text-primary">{selectedEvent} - Results</DialogTitle>
           </DialogHeader>
 
           {selectedEvent && (() => {
-            const all = [...eventsData.mens, ...eventsData.womens]
-            const e = all.find(x => x.event === selectedEvent)
+            const allEvents = [...eventsData.mens, ...eventsData.womens]
+            const e = allEvents.find(x => x.event === selectedEvent)
             if (!e) return null
 
             const places = [
