@@ -1,4 +1,13 @@
-export const scheduleData = [
+import { ScheduleEvent } from "@/lib/types";
+
+export type Schedules = {
+  day: string;
+  date: string;
+  isExpanded: boolean;
+  events: ScheduleEvent[];
+};
+
+export const scheduleData: Schedules[] = [
   {
     day: "Day - 1",
     date: "12 December 2025",
@@ -235,19 +244,28 @@ export const scheduleData = [
         time: "06:00 AM",
         event: "Hammer Throw",
         section: "Women",
+        venue: "Chathannor School Ground",
         round: "Final",
       },
       {
         time: "06:00 AM",
         event: "Hammer Throw",
         section: "Men",
+        venue: "Chathannor School Ground",
         round: "Final",
       },
-      { time: "06:00 AM", event: "Pole Vault", section: "Men", round: "Final" },
+      {
+        time: "06:00 AM",
+        event: "Pole Vault",
+        section: "Men",
+        venue: "Chathannor School Ground",
+        round: "Final",
+      },
       {
         time: "06:00 AM",
         event: "Pole Vault",
         section: "Women",
+        venue: "Chathannor School Ground",
         round: "Final",
       },
 

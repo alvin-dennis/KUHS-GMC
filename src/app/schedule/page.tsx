@@ -45,7 +45,8 @@ export default function Schedule() {
                         <tr className="text-primary-foreground/80 text-sm font-semibold">
                           <td className="pb-3 pr-4">Time</td>
                           <td className="pb-3 px-4">Event</td>
-                          <td className="pb-3 pl-4">Details</td>
+                          <td className="pb-3 pl-3">Details</td>
+                          <td className="pb-3 pl-4">Venue</td>
                         </tr>
                       </thead>
                       <tbody>
@@ -53,7 +54,10 @@ export default function Schedule() {
                           <tr key={eventIndex} className="border-t border-primary/10 text-primary-foreground">
                             <td className="py-3 pr-4 text-sm font-semibold">{event.time}</td>
                             <td className="py-3 px-4 text-sm">{event.event}</td>
-                            <td className="py-3 pl-4 text-sm whitespace-pre-line">{event.section}</td>
+                            <td className="py-3 pl-3 text-sm whitespace-pre-line">{event.section}</td>
+                            <td className="py-3 pl-4 text-sm text-primary-foreground/80">
+                              {event.venue ?? "Govt. Model Boys HSS"}
+                            </td>
                           </tr>
                         ))}
                       </tbody>
