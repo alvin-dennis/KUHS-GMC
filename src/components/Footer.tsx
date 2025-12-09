@@ -22,13 +22,12 @@ export default function Footer() {
             </div>
             <h3 className="font-bold text-lg mb-2">KUHS</h3>
             <p className="text-sm opacity-90">
-              12<sup>th</sup> Intercollege Athletics Meet 2025-26
+              12<sup>th</sup> Intercollegiate Athletics Meet 2025-26
             </p>
-            <p className="text-sm opacity-75 mt-2">
-              GOVT. MODEL BOYS HSS
-              <br />
-              DEPT. OF PHYSICAL EDUCATION
-            </p>
+            <div className="text-sm opacity-75 mt-2">
+              <p> at Govt. Model Boys HSS Kunnamkulam</p>
+              <p>GOVERNMENT MEDICAL COLLEGE THRISSUR</p>
+            </div>
             <div className="flex space-x-4 mt-5 items-center justify-center sm:justify-start">
               {socialIcons.map((item, idx) => {
                 const Icon = item.icon
@@ -41,7 +40,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Icon className="w-8 h-8" />
+                    <Icon className="w-8 h-8 cursor-pointer" />
                   </Link>
                 )
               })}

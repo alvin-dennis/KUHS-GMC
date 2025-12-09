@@ -13,7 +13,7 @@ export default function Hero() {
               KUHS
               <br />
               <span className="text-3xl sm:text-4xl lg:text-5xl">
-                12<sup className="text-2xl">th</sup> Intercollege
+                12<sup className="text-2xl">th</sup> Intercollegiate
               </span>
               <br />
               Athletics Meet 2025-26
@@ -32,8 +32,8 @@ export default function Hero() {
             </div>
 
             <div className="text-sm text-muted-foreground mb-6 space-y-1">
-              <p>Govt. Model Boys HSS Kunnamkulam</p>
-              <p>DEPT. OF PHYSICAL EDUCATION GOVERNMENT MEDICAL COLLEGE THRISSUR</p>
+              <p> at Govt. Model Boys HSS Kunnamkulam</p>
+              <p className="font-bold text-primary">GOVERNMENT MEDICAL COLLEGE THRISSUR</p>
             </div>
 
 

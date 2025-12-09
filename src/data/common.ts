@@ -61,6 +61,12 @@ export const footerQuickLinks = [
 ];
 
 export const socialIcons = [
-  { icon: IoLogoInstagram, href: "https://instagram.com" },
-  { icon: IoLogoWhatsapp, href: "https://wa.me/1234567890" },
+  {
+    icon: IoLogoInstagram,
+    href: "https://www.instagram.com/interzone_athletics_2025?igsh=aXg0aDZndWJjOHRj",
+  },
+  {
+    icon: IoLogoWhatsapp,
+    href: "https://chat.whatsapp.com/IMk5FhQTfNm0Ha3ieIOAzZ",
+  },
 ];

@@ -33,7 +33,7 @@ export default function Contact() {
           </div>
 
           <div className="h-80 rounded-lg overflow-hidden">
-            <iframe width="100%" height="600" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;coord=52.70967533219885, -8.020019531250002&amp;q=1%20Grafton%20Street%2C%20Dublin%2C%20Ireland&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" />
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3921.1078276377925!2d76.0738894!3d10.6487307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7954601c8b42b%3A0x735c8cef28570b2b!2sSenior%20Ground%20GMBHSS%20KUNNAMKULAM!5e0!3m2!1sen!2sin!4v1765259743123!5m2!1sen!2sin" width="600" height="450" loading="lazy" />
           </div>
         </div>
       </div>

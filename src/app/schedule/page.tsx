@@ -53,7 +53,7 @@ export default function Schedule() {
                           <tr key={eventIndex} className="border-t border-primary/10 text-primary-foreground">
                             <td className="py-3 pr-4 text-sm font-semibold">{event.time}</td>
                             <td className="py-3 px-4 text-sm">{event.event}</td>
-                            <td className="py-3 pl-4 text-sm whitespace-pre-line">{event.details}</td>
+                            <td className="py-3 pl-4 text-sm whitespace-pre-line">{event.section}</td>
                           </tr>
                         ))}
                       </tbody>
