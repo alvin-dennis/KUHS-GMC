@@ -6,17 +6,11 @@ import { usePathname } from "next/navigation"
 import { Menu, X, Phone } from "lucide-react"
 import Image from "next/image"
 import { Button } from "./ui/button"
+import { navItems } from "@/data/common"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
-
-  const navItems = [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/#about" },
-    { label: "Events", href: "/#events" },
-    { label: "Gallery", href: "/schedule" },
-  ]
 
   return (
     <header className="fixed top-0 w-full bg-background/95 backdrop-blur border-b border-border z-50">

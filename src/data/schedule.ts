@@ -368,7 +368,7 @@ export const scheduleData: Schedules[] = [
 
       {
         time: "11:30 AM",
-        event: "4 × 400 M. Relay",
+        event: "4×400 M. Relay",
         section: "Men",
         round: "Time Trial",
       },
@@ -380,7 +380,7 @@ export const scheduleData: Schedules[] = [
       },
       {
         time: "11:45 AM",
-        event: "4 × 400 M. Relay",
+        event: "4×400 M. Relay",
         section: "Women",
         round: "Time Trial",
       },
@@ -433,13 +433,13 @@ export const scheduleData: Schedules[] = [
 
       {
         time: "03:00 PM",
-        event: "4 × 400 M. Relay",
+        event: "4×400 M. Relay",
         section: "Men",
         round: "Final",
       },
       {
         time: "03:15 PM",
-        event: "4 × 400 M. Relay",
+        event: "4×400 M. Relay",
         section: "Women",
         round: "Final",
       },
