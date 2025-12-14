@@ -1,53 +1,41 @@
-export default function Gallery() {
-  const highlights = [
-    {
-      id: 1,
-      image: "/track-and-field-athletes-sports-event.jpg",
-    },
-    {
-      id: 2,
-      image: "/relay-race-athletes-running.jpg",
-    },
-    {
-      id: 3,
-      image: "/athletes-medal-ceremony-celebration.jpg",
-    },
-    {
-      id: 4,
-      image: "/jump-inflatable-sports-event.jpg",
-    },
-    {
-      id: 5,
-      image: "/spectators-crowd-stadium.jpg",
-    },
-  ]
+import Image from "next/image"
+import Link from "next/link"
+import { highlights } from "@/data/common"
+import { Button } from "@/components/ui/button"
 
+export default function Gallery() {
   return (
-    <section id="gallery" className="py-16 px-4 sm:px-6 lg:px-8 bg-background">
+    <section
+      id="gallery"
+      className="py-16 px-4 sm:px-6 lg:px-8 bg-background"
+    >
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-foreground">Event Highlights</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-foreground">
+          Event Highlights
+        </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {highlights.map((highlight, index) => (
+          {highlights.map((highlight) => (
             <div
               key={highlight.id}
               className="relative bg-card rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow h-64"
             >
-              <img
-                src={highlight.image || "/placeholder.svg"}
-                alt={`Highlight ${index + 1}`}
-                className="w-full h-full object-cover"
+              <Image
+                src={highlight.image}
+                alt="Gallery photos"
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
               />
             </div>
           ))}
-
-          {/* See More Card */}
-          <div className="relative bg-card rounded-lg shadow-md hover:shadow-lg transition-shadow h-64 flex items-center justify-center border-2 border-dashed border-border">
-            <div className="text-center">
-              <p className="text-2xl font-bold text-foreground mb-2">See More...</p>
-              <p className="text-sm text-muted-foreground">View all event photos</p>
-            </div>
-          </div>
+        </div>
+        <div className="flex justify-center mt-10">
+          <Link href="https://drive.google.com/drive/folders/1MqdXyCAQfslGds8PmbjRPoJB37Oa7qLS?usp=sharing">
+            <Button variant="default" size="lg" className="text-lg font-semibold">
+              View More
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

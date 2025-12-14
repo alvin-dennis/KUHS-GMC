@@ -34,6 +34,33 @@ export const guests = [
   },
 ];
 
+export const highlights = [
+  {
+    id: 1,
+    image: "/assets/gallery/1.png",
+  },
+  {
+    id: 2,
+    image: "/assets/gallery/2.png",
+  },
+  {
+    id: 3,
+    image: "/assets/gallery/3.png",
+  },
+  {
+    id: 4,
+    image: "/assets/gallery/4.png",
+  },
+  {
+    id: 5,
+    image: "/assets/gallery/5.png",
+  },
+  {
+    id: 6,
+    image: "/assets/gallery/6.png",
+  },
+];
+
 export const contacts = [
   {
     name: "Dr Ajayghosh M V",
