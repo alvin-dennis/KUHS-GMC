@@ -33,6 +33,8 @@ interface CollegeData {
   rank: number
   college: string
   points: number
+  mens: number
+  womens: number
 }
 
 interface EventData {
@@ -98,6 +100,8 @@ export default function Results() {
           .map((row: any) => ({
             college: String(row["College name"] || row.college || ""),
             points: Number(row["Points"] || 0),
+            mens: Number(row["Mens"] || 0),
+            womens: Number(row["Womens"] || 0),
           }))
           .filter((c) => c.college)
           .sort((a, b) => b.points - a.points)
@@ -154,6 +158,8 @@ export default function Results() {
                       <th className="px-6 py-3 text-left">Rank</th>
                       <th className="px-6 py-3 text-left">College</th>
                       <th className="px-6 py-3 text-left">Points</th>
+                      <th className="px-6 py-3 text-left">Mens</th>
+                      <th className="px-6 py-3 text-left">Womens</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -162,6 +168,8 @@ export default function Results() {
                         <td className="px-6 py-3">{c.rank}</td>
                         <td className="px-6 py-3">{c.college}</td>
                         <td className="px-6 py-3 font-semibold">{c.points}</td>
+                        <td className="px-6 py-3 font-semibold">{c.mens}</td>
+                        <td className="px-6 py-3 font-semibold">{c.womens}</td>
                       </tr>
                     ))}
                   </tbody>
